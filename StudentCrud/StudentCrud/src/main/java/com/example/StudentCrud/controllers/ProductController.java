@@ -7,7 +7,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -23,33 +22,7 @@ public class ProductController {
         model.addAttribute("listProducts", listProducts);
         model.addAttribute("keyword", keyword);
 
-        return "index";
+        return "results";
     }
 
-    /*@GetMapping("/new")
-    public String add(Model model) {
-        model.addAttribute("product", new Product());
-        return "new";
-    }
-
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveProduct(@ModelAttribute("product") Product product) {
-        productService.save(product);
-        return "redirect:/";
-    }
-
-    @RequestMapping("/edit/{id}")
-    public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
-        ModelAndView mav = new ModelAndView("new");
-        Product product = productService.get(id);
-        mav.addObject("product", product);
-        return mav;
-
-    }
-    @RequestMapping("/delete/{id}")
-    public String deleteProduct(@PathVariable(name = "id") int id) {
-        productService.delete(id);
-        return "redirect:/";
-    }*/
 }
-
