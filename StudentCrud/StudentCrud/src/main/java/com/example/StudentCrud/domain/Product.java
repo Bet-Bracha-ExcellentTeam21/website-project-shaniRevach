@@ -36,13 +36,13 @@ public class Product {
     private String imagePath;
 
     @Column(name = "price")
-    private Integer price;
+    private double price;
 
     public Product() {
 
     }
 
-    public Product(String name, String imagePath, Integer price) {
+    public Product(String name, String imagePath, double price) {
         this.name = name;
         this.imagePath = imagePath;
         this.price = price;
@@ -54,5 +54,29 @@ public class Product {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
