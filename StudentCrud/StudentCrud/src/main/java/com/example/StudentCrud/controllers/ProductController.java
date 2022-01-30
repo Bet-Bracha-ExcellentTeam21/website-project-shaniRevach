@@ -13,14 +13,18 @@ import java.util.List;
 @Controller
 public class ProductController {
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
 
-    @RequestMapping("/")
+    @Autowired
+    public ProductController(ProductService productService){
+        this.productService = productService;
+    }
+
+    @GetMapping( "/search")
     public String viewHomePage(Model model, @Param("keyword") String keyword) {
         List<Product> listProducts = productService.listAll(keyword);
         model.addAttribute("listProducts", listProducts);
-        model.addAttribute("keyword", keyword);
+       // model.addAttribute("keyword", keyword);
 
         return "results";
     }
