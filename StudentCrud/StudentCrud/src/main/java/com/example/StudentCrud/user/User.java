@@ -20,31 +20,30 @@ import java.util.Collections;
 public class User implements UserDetails {
 
     @SequenceGenerator(
-            name = "student_sequence",
-            sequenceName = "student_sequence",
+            name = "user_sequence",
+            sequenceName = "user_sequence",
             allocationSize = 1
     )
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "student_sequence"
+            generator = "user_sequence"
     )
     private Long id;
     private String name;
-    private String userName;
+    private String email;
     private String password;
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
     private Boolean locked = false;
     private Boolean enabled = false;
 
-    public User(String name, String userName, String password, UserRole userRole, Boolean locked, Boolean enabled) {
+    public User(String name, String email, String password, UserRole userRole) {
         this.name = name;
-        this.userName = userName;
+        this.email = email;
         this.password = password;
         this.userRole = userRole;
-        this.locked = locked;
-        this.enabled = enabled;
+
     }
 
     @Override
@@ -55,12 +54,18 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
+
         return password;
     }
 
     @Override
     public String getUsername() {
-        return userName;
+
+        return email;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
