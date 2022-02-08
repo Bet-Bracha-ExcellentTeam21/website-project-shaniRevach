@@ -2,8 +2,8 @@ package com.example.StudentCrud.domain;
 
 import javax.persistence.*;
 
-@Entity(name = "Product")
-@Table(name = "product")
+@Entity
+@Table(name = "products")
 public class Product {
 
     @Id
@@ -23,22 +23,18 @@ public class Product {
 
     @Column(
             name = "name",
-            nullable = false,
-            columnDefinition = "TEXT"
+            nullable = false
     )
     private String name;
 
     @Column(
             name = "image_path",
-            nullable = false,
-            columnDefinition = "TEXT"
+            nullable = false
     )
     private String imagePath;
 
     @Column(name = "price")
     private double price;
-
-
 
     public Product() {
 

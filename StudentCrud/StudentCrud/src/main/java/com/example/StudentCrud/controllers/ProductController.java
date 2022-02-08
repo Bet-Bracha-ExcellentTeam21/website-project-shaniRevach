@@ -1,4 +1,4 @@
-package com.example.StudentCrud.product;
+package com.example.StudentCrud.controllers;
 
 import com.example.StudentCrud.domain.Product;
 import com.example.StudentCrud.domain.ResponseTransfer;
@@ -27,14 +27,20 @@ public class ProductController {
     public String searchProduct(Model model, @Param("keyword") String keyword) {
         List<Product> listProducts = productService.listAll(keyword);
         model.addAttribute("listProducts", listProducts);
-
         return "results";
     }
 
     @PostMapping("/addProduct")
     @ResponseBody
-    public ResponseTransfer postResponseController(@RequestBody Product product) {
-        Product newProduct = taskRepo.save(product);
+    public ResponseTransfer addProduct(@RequestBody Product product) {
+        productService.save(product);
         return new ResponseTransfer("The product was successfully added");
+    }
+
+    @PostMapping("/removeProduct")
+    @ResponseBody
+    public ResponseTransfer removeProduct(@Param("id") Long id) {
+        productService.delete(id);
+        return new ResponseTransfer("The product was successfully removed");
     }
 }
