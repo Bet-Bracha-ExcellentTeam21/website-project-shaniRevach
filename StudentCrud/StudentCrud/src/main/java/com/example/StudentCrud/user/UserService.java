@@ -23,13 +23,12 @@ public class UserService implements UserDetailsService {
 
     public String singUp(User user){
         boolean userExist = userRepository.findByEmail(user.getEmail()).isPresent();
-        if(userExist){
+        if(userExist) {
             throw new IllegalStateException("Email already exist");
         }
 
         String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-
         userRepository.save(user);
 
         return "Welcome";

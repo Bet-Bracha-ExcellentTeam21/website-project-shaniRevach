@@ -37,7 +37,7 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
     private Boolean locked = false;
-    private Boolean enabled = false;
+    private Boolean enabled = true;
 
     public User(String firstName, String lastName, String email, String password, UserRole userRole) {
         this.firstName = firstName;
@@ -55,24 +55,9 @@ public class User implements UserDetails {
     }
 
     @Override
-    public String getPassword() {
-
-        return password;
-    }
-
-    @Override
     public String getUsername() {
 
         return email;
-    }
-
-    public String getFirstName() {
-
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
     }
 
     @Override
@@ -94,4 +79,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return enabled;
     }
+
 }
