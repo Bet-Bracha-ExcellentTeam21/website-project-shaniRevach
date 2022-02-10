@@ -22,13 +22,13 @@ public class ShoppingCartController {
         this.productService = productService;
     }
 
-    @GetMapping("")
+    @GetMapping("/shopping-cart")
     public String index() {
         return "shopping-cart";
     }
 
-    @GetMapping(path = "")
-    public String buy(@PathVariable("id") Long id, HttpSession session) {
+    @GetMapping(path = "/addToCart/{id}")
+    public String addToCart(@PathVariable("id") Long id, HttpSession session) {
         if (session.getAttribute("cart") == null) {
             List<Item> cart = new ArrayList<Item>();
             cart.add(new Item(productService.get(id), 1));
@@ -47,7 +47,7 @@ public class ShoppingCartController {
         return "redirect:/cart/index";
     }
 
-    @GetMapping("")
+    @GetMapping("/remove/{id}")
     public String remove(@PathVariable("id") Long id, HttpSession session) {
         List<Item> cart = (List<Item>) session.getAttribute("cart");
         int index = this.exists(id, cart);
