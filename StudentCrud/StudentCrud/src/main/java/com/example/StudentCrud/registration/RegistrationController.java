@@ -1,16 +1,18 @@
 package com.example.StudentCrud.registration;
 
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
+@RequestMapping(path = "/index")
 @AllArgsConstructor
 public class RegistrationController {
 
     private RegistrationService registrationService;
 
+    @PostMapping
     public String register(@RequestBody RegistrationRequest request) {
+
         return registrationService.register(request);
     }
 
