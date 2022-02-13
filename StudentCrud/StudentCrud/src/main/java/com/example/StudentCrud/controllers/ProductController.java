@@ -9,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
@@ -21,6 +19,13 @@ public class ProductController {
     @Autowired
     public ProductController(ProductService productService){
         this.productService = productService;
+    }
+
+    @GetMapping("/index")
+    public String viewHomePage(Model model) {
+        List<Product> listProducts = productService.listAll("");
+        model.addAttribute("listProducts", listProducts);
+        return "index";
     }
 
     @GetMapping( "/search")
