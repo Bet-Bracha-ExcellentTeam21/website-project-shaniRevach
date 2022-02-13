@@ -7,22 +7,31 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.apache.commons.validator.routines.EmailValidator;
 
+/**
+ * The services of the registration.
+ */
 @Service
 @AllArgsConstructor
 public class RegistrationService {
 
-    private final UserService userService;
+    private final UserService userService; //The services of the user.
 
-    public String register(RegistrationRequest request) {
-        boolean isValidEmail = EmailValidator.getInstance().isValid(request.getEmail());
+    /**
+     * The function get a request to register from the controller, validate the email,
+     * and add the new user to the user's table.
+     * @param registrationRequest Request from the user to register.
+     * @return Message if the registration succeed.
+     */
+    public String register(RegistrationRequest registrationRequest) {
+        boolean isValidEmail = EmailValidator.getInstance().isValid(registrationRequest.getEmail());
         if (!isValidEmail){
             throw new IllegalStateException("Wrong email");
         }
         return userService.singUp(new User(
-                request.getFirstName(),
-                request.getLastName(),
-                request.getEmail(),
-                request.getPassword(),
+                registrationRequest.getFirstName(),
+                registrationRequest.getLastName(),
+                registrationRequest.getEmail(),
+                registrationRequest.getPassword(),
                 UserRole.USER ));
     }
 }

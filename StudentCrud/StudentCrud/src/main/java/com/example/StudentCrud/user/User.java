@@ -7,11 +7,13 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
 
+/**
+ * The website user.
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -29,15 +31,15 @@ public class User implements UserDetails {
             strategy = GenerationType.SEQUENCE,
             generator = "user_sequence"
     )
-    private Long id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
+    private Long id; //The id name of the user.
+    private String firstName; //The first name of the user.
+    private String lastName; //The last name of the user.
+    private String email; //The email of the user.
+    private String password; //The password of the user.
     @Enumerated(EnumType.STRING)
-    private UserRole userRole;
-    private Boolean locked = false;
-    private Boolean enabled = true;
+    private UserRole userRole; //The role of the user.
+    private Boolean locked = false; //The access of the user.
+    private Boolean enabled = true; //Show if the user account is enabled.
 
     public User(String firstName, String lastName, String email, String password, UserRole userRole) {
         this.firstName = firstName;
@@ -62,21 +64,25 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
+
         return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
+
         return !locked;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
+
         return true;
     }
 
     @Override
     public boolean isEnabled() {
+
         return enabled;
     }
 

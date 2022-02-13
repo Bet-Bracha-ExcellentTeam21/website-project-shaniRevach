@@ -9,10 +9,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
+/**
+ * The all variables of new user for register request.
+ */
 public class RegistrationRequest {
 
-    private final String firstName;
-    private final String lastName;
-    private final String email;
-    private final String password;
+    private final String firstName; //The first name on the register request of the new user.
+    private final String lastName; //The last name on the register request of the new user.
+    private final String email; //The email on the register request of the new user.
+    private final String password; //The password on the register request of the new user.
 }
