@@ -4,7 +4,7 @@ import argparse
 
 def add_product(name, image_path, price):
     """
-    Sent a request for add product to the stak, and print the response.
+    Send a request for add product to the stak, and print the response.
     :param name: The name of the product to add.
     :param image_path: The image path of the product to add.
     :param price: The price of the product to add.
@@ -18,7 +18,7 @@ def add_product(name, image_path, price):
 
 def remove_product(product_id):
     """
-    Sent a request for remove product from the stak, and print the response.
+    Send a request for remove product from the stak, and print the response.
     :param product_id: The id of the product to remove.
     :return:
     """

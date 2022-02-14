@@ -8,19 +8,28 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
+
+/**
+ * The product controller.
+ */
 @Controller
 public class ProductController {
 
-    private final ProductService productService;
+    private final ProductService productService; //The product services.
 
     @Autowired
     public ProductController(ProductService productService){
+
         this.productService = productService;
     }
 
+    /**
+     * Display the products on the home page - "index".
+     * @param model
+     * @return List of all products.
+     */
     @GetMapping("/index")
     public String viewHomePage(Model model) {
         List<Product> listProducts = productService.listAll("");
@@ -28,6 +37,12 @@ public class ProductController {
         return "index";
     }
 
+    /**
+     * Search for product by keyword.
+     * @param model
+     * @param keyword The keyword to search by.
+     * @return List of all products found.
+     */
     @GetMapping( "/search")
     public String searchProduct(Model model, @Param("keyword") String keyword) {
         List<Product> listProducts = productService.listAll(keyword);
@@ -35,17 +50,28 @@ public class ProductController {
         return "results";
     }
 
+    /**
+     * Add a new product to stock.
+     * @param product The new product.
+     * @return Message that the product was successfully added.
+     */
     @PostMapping("/addProduct")
     @ResponseBody
-    public ResponseTransfer addProduct(@RequestBody Product product) {
+    public ResponseTransfer addProductToStock(@RequestBody Product product) {
         productService.save(product);
         return new ResponseTransfer("The product was successfully added");
     }
 
+    /**
+     * remove exist product from the stock.
+     * @param id The id of the product to be removed.
+     * @return Message that the product was successfully removed.
+     */
     @PostMapping("/removeProduct")
     @ResponseBody
-    public ResponseTransfer removeProduct(@Param("id") Long id) {
+    public ResponseTransfer removeProductFromStock(@Param("id") Long id) {
         productService.delete(id);
         return new ResponseTransfer("The product was successfully removed");
     }
+
 }

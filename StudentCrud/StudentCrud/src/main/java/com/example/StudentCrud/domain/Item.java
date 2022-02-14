@@ -1,31 +1,19 @@
 package com.example.StudentCrud.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+
+/**
+ * Item for each type of product in the shopping cart.
+ */
+@AllArgsConstructor
+@Getter
+@Setter
 public class Item {
 
-    private Product product;
-    private int quantity;
+    private Product product; //The product
+    private int quantity; //The quantity of the product.
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public Item() {
-    }
-
-    public Item(Product product, int quantity) {
-        this.product = product;
-        this.quantity = quantity;
-    }
 }

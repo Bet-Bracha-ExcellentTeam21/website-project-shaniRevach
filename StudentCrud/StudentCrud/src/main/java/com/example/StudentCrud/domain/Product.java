@@ -1,7 +1,15 @@
 package com.example.StudentCrud.domain;
 
+import lombok.Getter;
+import lombok.Setter;
 import javax.persistence.*;
 
+
+/**
+ * The products of the store.
+ */
+@Getter
+@Setter
 @Entity
 @Table(name = "products")
 public class Product {
@@ -19,26 +27,24 @@ public class Product {
             name = "id",
             updatable = false
     )
-    private Long id;
+    private Long id; //The id of the product.
 
     @Column(
             name = "name",
             nullable = false
     )
-    private String name;
+    private String name; //The name of the product.
 
     @Column(
             name = "image_path",
             nullable = false
     )
-    private String imagePath;
+    private String imagePath; //The image path of the product.
 
     @Column(name = "price")
-    private double price;
+    private double price; //The price of the product.
 
-    public Product() {
-
-    }
+    public Product() {}
 
     public Product(String name, String imagePath, double price) {
         this.name = name;
@@ -46,35 +52,4 @@ public class Product {
         this.price = price;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 }
