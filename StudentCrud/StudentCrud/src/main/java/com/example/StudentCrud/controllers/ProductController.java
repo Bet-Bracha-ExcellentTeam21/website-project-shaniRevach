@@ -55,7 +55,7 @@ public class ProductController {
      * @param product The new product.
      * @return Message that the product was successfully added.
      */
-    @PostMapping("/addProduct")
+    @PostMapping("/addProductToStock")
     @ResponseBody
     public ResponseTransfer addProductToStock(@RequestBody Product product) {
         productService.save(product);
@@ -67,7 +67,7 @@ public class ProductController {
      * @param id The id of the product to be removed.
      * @return Message that the product was successfully removed.
      */
-    @PostMapping("/removeProduct")
+    @PostMapping("/removeProductFromStock")
     @ResponseBody
     public ResponseTransfer removeProductFromStock(@Param("id") Long id) {
         productService.delete(id);

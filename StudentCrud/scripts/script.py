@@ -23,7 +23,7 @@ def remove_product(product_id):
     :param product_id: The id of the product to remove.
     :return:
     """
-    url = "http://localhost:8070/removeProduct"
+    url = "http://localhost:8070/removeProductFromStock"
     product_to_remove = {"id": product_id}
     response = requests.post(url, data=product_to_remove)
     print(response.text)
