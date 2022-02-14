@@ -16,7 +16,7 @@ import java.util.List;
  * The shopping cart controller.
  */
 @Controller
-@RequestMapping (path = "shoppingCart")
+@RequestMapping (path = "/shoppingCart")
 public class ShoppingCartController {
 
     private final ProductService productService; //The product services.
@@ -65,7 +65,7 @@ public class ShoppingCartController {
         int index = this.exists(id, cart);
         cart.remove(index);
         session.setAttribute("cart", cart);
-        return "redirect:/index/shopping-cart";
+        return "shopping-cart";
     }
 
     /**
